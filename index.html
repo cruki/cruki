@@ -1,31 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- ============================================================
-         ОСНОВНЫЕ МЕТА-ТЕГИ
-         - charset="UTF-8"  → поддержка кириллицы
-         - viewport         → адаптив под мобильные устройства
-         - title            → название вкладки браузера
-         ============================================================ -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CRUKI · Монтаж & Моушен</title>
-
-    <!-- ============================================================
-         ПОДКЛЮЧЕНИЕ ШРИФТА
-         - Inter → современный гротеск, бесплатный, от Google Fonts
-         - Жирности: 400 (обычный), 600 (полужирный), 700 (жирный),
-           800 (экстражирный), 900 (чёрный)
-         ============================================================ -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
-
     <style>
-        /* ============================================================
-           ГЛОБАЛЬНЫЙ СБРОС И БАЗА
-           - Убираем отступы у всех элементов
-           - box-sizing: border-box → удобные расчёты ширины
-           - body: тёмный фон, светлый текст, шрифт Inter
-           ============================================================ */
+        /* ===== СБРОС И БАЗА ===== */
         * {
             margin: 0;
             padding: 0;
@@ -34,66 +15,51 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #0b0b0b;      /* почти чёрный фон */
-            color: #ededed;           /* светло-серый текст */
+            background: #0b0b0b;
+            color: #ededed;
             line-height: 1.5;
-            -webkit-font-smoothing: antialiased; /* сглаживание для Chrome/Safari */
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* ============================================================
-           КОНТЕЙНЕР
-           - Ограничивает ширину контента (1100px)
-           - Центрирует по горизонтали
-           - Добавляет отступы по бокам на мобилках
-           ============================================================ */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* ============================================================
-           ШАПКА / HERO
-           - padding: 60px 0 40px → отступы сверху/снизу
-           - border-bottom → тонкая разделительная линия
-           ============================================================ */
+        /* ===== ШАПКА ===== */
         .hero {
             padding: 60px 0 40px;
             border-bottom: 1px solid #1a1a1a;
         }
 
-        /* Гибкая обёртка для контента шапки */
         .hero-content {
             display: flex;
-            flex-wrap: wrap;          /* перенос на мобилках */
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: flex-start;
             gap: 30px;
         }
 
-        /* Левая часть шапки (имя, роль, статы) */
         .hero-left .tag {
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 4px;      /* разреженный текст */
+            letter-spacing: 4px;
             color: #666;
             margin-bottom: 8px;
         }
 
-        /* ГЛАВНОЕ ИМЯ — CRUKI */
         .hero-left h1 {
-            font-size: 5rem;          /* крупный размер */
+            font-size: 5rem;
             font-weight: 900;
             line-height: 1;
-            letter-spacing: -3px;     /* плотная буква */
-            /* ГРАДИЕНТНЫЙ ТЕКСТ — белый → серый */
+            letter-spacing: -3px;
             background: linear-gradient(135deg, #ffffff 40%, #7a7a7a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 12px;
         }
 
-        /* Роль / специализация */
         .hero-left .role {
             font-size: 1.3rem;
             font-weight: 400;
@@ -101,13 +67,11 @@
             letter-spacing: 1px;
         }
 
-        /* Выделение жирным внутри роли (Motion Design) */
         .hero-left .role span {
             color: #fff;
             font-weight: 600;
         }
 
-        /* Блок со статистикой (года опыта, проекты) */
         .hero-stats {
             display: flex;
             gap: 40px;
@@ -133,21 +97,19 @@
             letter-spacing: 1px;
         }
 
-        /* Правая часть шапки — статус "открыт к сотрудничеству" */
         .hero-right {
             background: #141414;
             padding: 14px 24px;
-            border-radius: 60px;       /* сильно скруглённые края */
+            border-radius: 60px;
             border: 1px solid #2a2a2a;
             display: inline-flex;
             align-items: center;
             gap: 12px;
             font-weight: 600;
             font-size: 0.95rem;
-            white-space: nowrap;       /* текст в одну строку */
+            white-space: nowrap;
         }
 
-        /* Зелёная точка-индикатор (пульсирует) */
         .hero-right .dot {
             width: 10px;
             height: 10px;
@@ -157,22 +119,12 @@
             animation: pulse-dot 2s infinite;
         }
 
-        /* Анимация пульсации для зелёной точки */
         @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.3;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
-        /* ============================================================
-           БЛОК "О СЕБЕ" + ИНСТРУМЕНТЫ
-           - Краткое описание чем занимаюсь
-           - Список программ (теги)
-           ============================================================ */
+        /* ===== ОПИСАНИЕ ===== */
         .bio {
             padding: 32px 0 40px;
             border-bottom: 1px solid #1a1a1a;
@@ -185,13 +137,11 @@
             font-weight: 400;
         }
 
-        /* Жирный текст внутри описания */
         .bio strong {
             color: #fff;
             font-weight: 600;
         }
 
-        /* Список инструментов / программ */
         .tools {
             margin-top: 16px;
             display: flex;
@@ -210,17 +160,12 @@
             letter-spacing: 0.3px;
         }
 
-        /* ============================================================
-           СЕКЦИИ (общие стили)
-           - Отступы сверху/снизу
-           - Разделительная линия снизу
-           ============================================================ */
+        /* ===== СЕКЦИИ ===== */
         section {
             padding: 56px 0;
             border-bottom: 1px solid #1a1a1a;
         }
 
-        /* Заголовки секций */
         .section-title {
             font-size: 1.6rem;
             font-weight: 700;
@@ -228,24 +173,18 @@
             letter-spacing: -0.5px;
         }
 
-        /* Более светлая часть заголовка (например, "· вертикаль") */
         .section-title .accent {
             color: #666;
             font-weight: 400;
         }
 
-        /* ============================================================
-           ПОРТФОЛИО — СЕТКА ВЕРТИКАЛЬНЫХ ВИДЕО (9:16)
-           - grid-template-columns: повторяющиеся колонки от 200px
-           - видео обёртка с padding-bottom: 177.77% (соотношение 9:16)
-           ============================================================ */
+        /* ===== СЕТКА ВИДЕО (9:16) ===== */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 24px;
         }
 
-        /* Карточка видео */
         .video-card {
             background: #111;
             border-radius: 20px;
@@ -254,32 +193,39 @@
             transition: transform 0.25s ease, border-color 0.25s ease;
         }
 
-        /* Эффект при наведении на карточку */
         .video-card:hover {
             transform: translateY(-6px);
             border-color: #3a3a3a;
         }
 
-        /* Обёртка для сохранения пропорций 9:16 */
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 177.77%;   /* 16/9 * 100 = 177.77% */
+            padding-bottom: 177.77%;
             background: #0a0a0a;
             overflow: hidden;
         }
 
-        /* iframe внутри обёртки — растягивается на 100% */
-        .video-wrapper iframe {
+        /* Стили для встроенного видео */
+        .video-wrapper video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+            background: #0a0a0a;
         }
 
-        /* Информация под видео (название, описание) */
+        /* Стили для элементов управления плеером */
+        .video-wrapper video::-webkit-media-controls {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .video-wrapper video::-webkit-media-controls-panel {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
         .video-card .info {
             padding: 14px 16px 16px;
         }
@@ -295,11 +241,7 @@
             color: #777;
         }
 
-        /* ============================================================
-           КОНТАКТЫ
-           - 3 карточки в ряд (Telegram-каналы)
-           - Каждая карточка — ссылка
-           ============================================================ */
+        /* ===== КОНТАКТЫ ===== */
         #contacts {
             padding: 64px 0 56px;
             border-bottom: 1px solid #1a1a1a;
@@ -309,7 +251,6 @@
             margin-bottom: 40px;
         }
 
-        /* Сетка из 3 колонок */
         .contacts-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -317,7 +258,6 @@
             margin-top: 8px;
         }
 
-        /* Карточка контакта */
         .contact-card {
             background: #121212;
             border: 1px solid #262626;
@@ -330,7 +270,6 @@
             display: block;
         }
 
-        /* Эффект при наведении на карточку контакта */
         .contact-card:hover {
             transform: translateY(-8px);
             border-color: #4a4a4a;
@@ -338,7 +277,6 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
-        /* Название канала */
         .contact-card .label {
             font-weight: 700;
             font-size: 1.15rem;
@@ -347,13 +285,11 @@
             margin-bottom: 6px;
         }
 
-        /* Описание канала */
         .contact-card .desc {
             font-size: 0.85rem;
             color: #888;
         }
 
-        /* Стрелка-указатель внизу карточки */
         .contact-card .arrow {
             color: #4caf50;
             font-weight: 500;
@@ -364,15 +300,11 @@
             transition: border-color 0.2s;
         }
 
-        /* При наведении подчёркиваем стрелку */
         .contact-card:hover .arrow {
             border-bottom-color: #4caf50;
         }
 
-        /* ============================================================
-           ПОДВАЛ
-           - Простая строка с копирайтом
-           ============================================================ */
+        /* ===== ПОДВАЛ ===== */
         footer {
             padding: 32px 0;
             text-align: center;
@@ -381,139 +313,99 @@
             letter-spacing: 0.5px;
         }
 
-        /* ============================================================
-           АДАПТИВНОСТЬ (MEDIA QUERIES)
-           - Планшеты (до 900px)   → контакты становятся уже
-           - Планшеты (до 768px)   → шапка в столбик, 2 колонки видео
-           - Телефоны (до 480px)   → очень маленькие экраны
-           ============================================================ */
-
-        /* Планшеты и маленькие ноутбуки */
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 900px) {
             .contacts-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 14px;
             }
-
             .contact-card {
                 padding: 24px 14px 20px;
             }
-
             .contact-card .label {
                 font-size: 1rem;
             }
         }
 
-        /* Планшеты вертикальные и большие телефоны */
         @media (max-width: 768px) {
             .hero-left h1 {
                 font-size: 3.4rem;
                 letter-spacing: -2px;
             }
-
             .hero-content {
-                flex-direction: column;  /* шапка в столбик */
+                flex-direction: column;
             }
-
             .hero-right {
                 white-space: normal;
                 font-size: 0.85rem;
                 padding: 12px 20px;
             }
-
             .hero-stats {
                 gap: 24px;
             }
-
             .hero-stats .stat .number {
                 font-size: 1.4rem;
             }
-
             .bio p {
                 font-size: 1rem;
             }
-
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
-
             .section-title {
                 font-size: 1.3rem;
             }
-
             .contacts-grid {
-                grid-template-columns: 1fr;  /* контакты в столбик */
+                grid-template-columns: 1fr;
                 gap: 12px;
             }
         }
 
-        /* Маленькие телефоны */
         @media (max-width: 480px) {
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-
             .hero-left h1 {
                 font-size: 2.8rem;
             }
-
             .container {
                 padding: 0 16px;
             }
-
             .hero {
                 padding: 40px 0 28px;
             }
-
             section {
                 padding: 40px 0;
             }
-
             #contacts {
                 padding: 40px 0 32px;
             }
         }
     </style>
 </head>
-
 <body>
 
-    <!-- =============================================================
-         ШАПКА / HERO
-         - Здесь находится имя, специализация, статистика
-         - Статус "открыт к сотрудничеству" с зелёной точкой
-         ============================================================= -->
+    <!-- ===== ШАПКА ===== -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <!-- Левая часть: имя, роль, статы -->
                 <div class="hero-left">
-                    <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ: "Видеомонтажер" → можно поменять на "Motion Designer" или что угодно -->
                     <div class="tag">Видеомонтажер</div>
-
-                    <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ: "CRUKI" → ваше имя или ник -->
                     <h1>CRUKI</h1>
-
-                    <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ: специализация -->
                     <div class="role">Shorts · TikTok · <span>Motion Design</span></div>
-
-                    <!-- Статистика — меняйте цифры -->
                     <div class="hero-stats">
                         <div class="stat">
-                            <span class="number">3+</span>   <!-- ЦИФРА ДЛЯ ЗАМЕНЫ -->
+                            <span class="number">3+</span>
                             <span class="label">года опыта</span>
                         </div>
                         <div class="stat">
-                            <span class="number">150+</span> <!-- ЦИФРА ДЛЯ ЗАМЕНЫ -->
+                            <span class="number">150+</span>
                             <span class="label">проектов</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Правая часть: статус "открыт к сотрудничеству" -->
-                <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ: можно поменять на "доступен для заказов" и т.д. -->
                 <div class="hero-right">
                     <span class="dot"></span>
                     открыт к сотрудничеству
@@ -522,184 +414,126 @@
         </div>
     </header>
 
-    <!-- =============================================================
-         БЛОК "О СЕБЕ" + ИНСТРУМЕНТЫ
-         - Текст с описанием услуг
-         - Список программ, в которых работаете
-         ============================================================= -->
+    <!-- ===== ОПИСАНИЕ ===== -->
     <div class="bio">
         <div class="container">
-            <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ: описание ваших услуг -->
             <p>
                 Делаю <strong>Shorts, TikTok</strong> и любую вертикальную историю,
                 которая работает. Моушен-дизайн, динамичный монтаж, чистая эстетика.
             </p>
-
-            <!-- ИНСТРУМЕНТЫ ДЛЯ ЗАМЕНЫ: добавляйте/удаляйте теги -->
             <div class="tools">
                 <span>After Effects</span>
                 <span>Premiere Pro</span>
                 <span>Figma</span>
                 <span>Photoshop</span>
-                <!-- ДОБАВЛЯЙТЕ НОВЫЕ: <span>Название</span> -->
             </div>
         </div>
     </div>
 
-    <!-- =============================================================
-         ПОРТФОЛИО
-         - Сетка с вертикальными видео (формат 9:16)
-         - Каждая карточка содержит iframe с YouTube/Vimeo
-         ============================================================= -->
+    <!-- ===== ПОРТФОЛИО ===== -->
     <section id="portfolio">
         <div class="container">
-            <!-- ЗАГОЛОВОК — можно поменять -->
             <h2 class="section-title">Портфолио <span class="accent">· вертикаль</span></h2>
-
             <div class="video-grid">
 
-                <!-- ===================================================
-                     КАРТОЧКА ВИДЕО №1
-                     - src="..." → вставьте свою embed-ссылку
-                     - .title → название проекта
-                     - .desc → описание (тип контента)
-                     =================================================== -->
+                <!-- ================================================
+                     ВИДЕО 1: ELBRUS_3.mp4
+                     ================================================ -->
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <!-- ССЫЛКА ДЛЯ ЗАМЕНЫ: вставьте embed-ссылку с YouTube/Vimeo -->
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        <video controls playsinline preload="metadata">
+                            <source src="video/ELBRUS_3.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает тег video.
+                        </video>
                     </div>
                     <div class="info">
-                        <div class="title">Название проекта 1</div>   <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                        <div class="desc">Shorts · моушен</div>        <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
+                        <div class="title">ELBRUS</div>
+                        <div class="desc">Shorts · моушен</div>
                     </div>
                 </div>
 
-                <!-- ===================================================
-                     КАРТОЧКА ВИДЕО №2
-                     =================================================== -->
+                <!-- ================================================
+                     ВИДЕО 2: RAM.mp4
+                     ================================================ -->
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <!-- ССЫЛКА ДЛЯ ЗАМЕНЫ -->
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        <video controls playsinline preload="metadata">
+                            <source src="video/RAM.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает тег video.
+                        </video>
                     </div>
                     <div class="info">
-                        <div class="title">Название проекта 2</div>   <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                        <div class="desc">TikTok · монтаж</div>        <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
+                        <div class="title">RAM</div>
+                        <div class="desc">TikTok · монтаж</div>
                     </div>
                 </div>
 
-                <!-- ===================================================
-                     КАРТОЧКА ВИДЕО №3
-                     =================================================== -->
+                <!-- ================================================
+                     ВИДЕО 3: jef-1.mp4 (было jef 1.mp4, переименуйте!)
+                     ================================================ -->
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <!-- ССЫЛКА ДЛЯ ЗАМЕНЫ -->
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        <video controls playsinline preload="metadata">
+                            <source src="video/jef-1.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает тег video.
+                        </video>
                     </div>
                     <div class="info">
-                        <div class="title">Название проекта 3</div>   <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                        <div class="desc">Shorts · графика</div>        <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
+                        <div class="title">JEF</div>
+                        <div class="desc">Shorts · графика</div>
                     </div>
                 </div>
 
-                <!-- ===================================================
-                     КАРТОЧКА ВИДЕО №4
-                     =================================================== -->
+                <!-- ================================================
+                     ВИДЕО 4: schess.mp4
+                     ================================================ -->
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <!-- ССЫЛКА ДЛЯ ЗАМЕНЫ -->
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        <video controls playsinline preload="metadata">
+                            <source src="video/schess.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает тег video.
+                        </video>
                     </div>
                     <div class="info">
-                        <div class="title">Название проекта 4</div>   <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                        <div class="desc">TikTok · VFX</div>            <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
+                        <div class="title">SCHESS</div>
+                        <div class="desc">TikTok · VFX</div>
                     </div>
                 </div>
-
-                <!-- ===================================================
-                     КАК ДОБАВИТЬ НОВОЕ ВИДЕО:
-                     1. Скопируйте блок <div class="video-card">...</div>
-                     2. Вставьте ниже
-                     3. Поменяйте src, .title, .desc
-                     =================================================== -->
 
             </div>
         </div>
     </section>
 
-    <!-- =============================================================
-         КОНТАКТЫ
-         - 3 карточки с Telegram-ссылками
-         - Каждая карточка — кликабельная ссылка
-         ============================================================= -->
+    <!-- ===== КОНТАКТЫ ===== -->
     <section id="contacts">
         <div class="container">
-            <!-- ЗАГОЛОВОК — можно поменять -->
             <h2 class="section-title">Связаться <span class="accent">· давай работать</span></h2>
-
             <div class="contacts-grid">
-
-                <!-- ===================================================
-                     КАРТОЧКА КОНТАКТА №1 — Личный Telegram
-                     - href="..." → ваша ссылка на Telegram
-                     - .label → название
-                     - .desc → описание
-                     - .arrow → текст со ссылкой
-                     =================================================== -->
                 <a href="https://t.me/Cruki1" target="_blank" class="contact-card">
-                    <!-- ССЫЛКА ДЛЯ ЗАМЕНЫ: https://t.me/Cruki1 → ваш ник -->
-                    <span class="label">Личный Telegram</span>   <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                    <span class="desc">Быстрая связь</span>      <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                    <span class="arrow">@Cruki1 →</span>          <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
+                    <span class="label">Личный Telegram</span>
+                    <span class="desc">Быстрая связь</span>
+                    <span class="arrow">@Cruki1 →</span>
                 </a>
-
-                <!-- ===================================================
-                     КАРТОЧКА КОНТАКТА №2 — CRUKI PROJECT
-                     =================================================== -->
                 <a href="https://t.me/crukiPROJECT" target="_blank" class="contact-card">
-                    <!-- ССЫЛКА ДЛЯ ЗАМЕНЫ: https://t.me/crukiPROJECT -->
-                    <span class="label">CRUKI PROJECT</span>     <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                    <span class="desc">Мой канал с работами</span> <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                    <span class="arrow">t.me/crukiPROJECT →</span> <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
+                    <span class="label">CRUKI PROJECT</span>
+                    <span class="desc">Мой канал с работами</span>
+                    <span class="arrow">t.me/crukiPROJECT →</span>
                 </a>
-
-                <!-- ===================================================
-                     КАРТОЧКА КОНТАКТА №3 — ALT CREATION
-                     =================================================== -->
                 <a href="https://t.me/altcreation" target="_blank" class="contact-card">
-                    <!-- ССЫЛКА ДЛЯ ЗАМЕНЫ: https://t.me/altcreation -->
-                    <span class="label">ALT CREATION</span>      <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                    <span class="desc">Для креативных</span>      <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
-                    <span class="arrow">t.me/altcreation →</span>  <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ -->
+                    <span class="label">ALT CREATION</span>
+                    <span class="desc">Для креативных</span>
+                    <span class="arrow">t.me/altcreation →</span>
                 </a>
-
-                <!-- ===================================================
-                     КАК ДОБАВИТЬ НОВЫЙ КОНТАКТ:
-                     1. Скопируйте <a href="..." class="contact-card">...</a>
-                     2. Вставьте внутри .contacts-grid
-                     3. Поменяйте href, .label, .desc, .arrow
-                     =================================================== -->
-
             </div>
         </div>
     </section>
 
-    <!-- =============================================================
-         ПОДВАЛ
-         - Копирайт с вашим именем и годом
-         ============================================================= -->
+    <!-- ===== ПОДВАЛ ===== -->
     <footer>
         <div class="container">
-            <!-- ТЕКСТ ДЛЯ ЗАМЕНЫ: ваше имя и год -->
             CRUKI · монтаж &amp; моушен · 2026
         </div>
     </footer>
-
-    <!-- =============================================================
-         СКРИПТОВ НЕТ — сайт полностью статичный
-         Всё работает без JavaScript
-         ============================================================= -->
 
 </body>
 </html>
