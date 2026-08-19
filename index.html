@@ -26,6 +26,7 @@
             padding: 0 24px;
         }
 
+        /* ===== ШАПКА ===== */
         .hero {
             padding: 60px 0 40px;
             border-bottom: 1px solid #1a1a1a;
@@ -47,7 +48,7 @@
             margin-bottom: 8px;
         }
 
-        .hero-left h1 {
+        .hero-name h1 {
             font-size: 5rem;
             font-weight: 900;
             line-height: 1;
@@ -111,7 +112,7 @@
         .hero-right .dot {
             width: 10px;
             height: 10px;
-            background: #4caf50;
+            background: #4fc3f7;
             border-radius: 50%;
             display: inline-block;
             animation: pulse-dot 2s infinite;
@@ -122,6 +123,7 @@
             50% { opacity: 0.3; }
         }
 
+        /* ===== ОПИСАНИЕ ===== */
         .bio {
             padding: 32px 0 40px;
             border-bottom: 1px solid #1a1a1a;
@@ -157,6 +159,7 @@
             letter-spacing: 0.3px;
         }
 
+        /* ===== ПОРТФОЛИО ===== */
         section {
             padding: 56px 0;
             border-bottom: 1px solid #1a1a1a;
@@ -190,7 +193,7 @@
 
         .video-card:hover {
             transform: translateY(-6px);
-            border-color: #3a3a3a;
+            border-color: #4fc3f7;
         }
 
         .video-wrapper {
@@ -201,7 +204,6 @@
             overflow: hidden;
         }
 
-        /* ✅ СВЕТЛЫЙ ПЛЕЕР + ВИДНО ВСЁ ВИДЕО */
         .video-wrapper video {
             position: absolute;
             top: 0;
@@ -239,6 +241,45 @@
             color: #777;
         }
 
+        /* ===== КНОПКА "ВСЕ ПРОЕКТЫ" ===== */
+        .portfolio-footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .btn-portfolio {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-portfolio:hover {
+            background: #4fc3f7;
+            color: #0b0b0b;
+            border-color: #4fc3f7;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(79, 195, 247, 0.15);
+        }
+
+        .btn-portfolio .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-portfolio:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* ===== КОНТАКТЫ ===== */
         #contacts {
             padding: 64px 0 56px;
             border-bottom: 1px solid #1a1a1a;
@@ -269,9 +310,9 @@
 
         .contact-card:hover {
             transform: translateY(-8px);
-            border-color: #4a4a4a;
+            border-color: #4fc3f7;
             background: #1a1a1a;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 50px rgba(79, 195, 247, 0.08);
         }
 
         .contact-card .label {
@@ -288,7 +329,7 @@
         }
 
         .contact-card .arrow {
-            color: #4caf50;
+            color: #4fc3f7;
             font-weight: 500;
             margin-top: 12px;
             display: inline-block;
@@ -298,9 +339,10 @@
         }
 
         .contact-card:hover .arrow {
-            border-bottom-color: #4caf50;
+            border-bottom-color: #4fc3f7;
         }
 
+        /* ===== ПОДВАЛ ===== */
         footer {
             padding: 32px 0;
             text-align: center;
@@ -309,6 +351,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 900px) {
             .contacts-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -323,7 +366,7 @@
         }
 
         @media (max-width: 768px) {
-            .hero-left h1 {
+            .hero-name h1 {
                 font-size: 3.4rem;
                 letter-spacing: -2px;
             }
@@ -355,6 +398,10 @@
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
+            .btn-portfolio {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -362,7 +409,7 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-            .hero-left h1 {
+            .hero-name h1 {
                 font-size: 2.8rem;
             }
             .container {
@@ -377,17 +424,26 @@
             #contacts {
                 padding: 40px 0 32px;
             }
+            .btn-portfolio {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== ШАПКА ===== -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-left">
                     <div class="tag">Видеомонтажер</div>
-                    <h1>CRUKI</h1>
+                    <div class="hero-name">
+                        <h1>CRUKI</h1>
+                    </div>
                     <div class="role">Shorts · TikTok · <span>Motion Design</span></div>
                     <div class="hero-stats">
                         <div class="stat">
@@ -408,6 +464,7 @@
         </div>
     </header>
 
+    <!-- ===== ОПИСАНИЕ ===== -->
     <div class="bio">
         <div class="container">
             <p>
@@ -423,12 +480,12 @@
         </div>
     </div>
 
+    <!-- ===== ПОРТФОЛИО ===== -->
     <section id="portfolio">
         <div class="container">
             <h2 class="section-title">Портфолио <span class="accent">· вертикаль</span></h2>
             <div class="video-grid">
 
-                <!-- ✅ ELBRUS_3 — TikTok -->
                 <div class="video-card">
                     <div class="video-wrapper">
                         <video controls playsinline preload="metadata">
@@ -441,7 +498,6 @@
                     </div>
                 </div>
 
-                <!-- ✅ RAM — Shorts -->
                 <div class="video-card">
                     <div class="video-wrapper">
                         <video controls playsinline preload="metadata">
@@ -454,7 +510,6 @@
                     </div>
                 </div>
 
-                <!-- ✅ jef-1 — TikTok -->
                 <div class="video-card">
                     <div class="video-wrapper">
                         <video controls playsinline preload="metadata">
@@ -467,7 +522,6 @@
                     </div>
                 </div>
 
-                <!-- ✅ shess — Shorts -->
                 <div class="video-card">
                     <div class="video-wrapper">
                         <video controls playsinline preload="metadata">
@@ -475,15 +529,24 @@
                         </video>
                     </div>
                     <div class="info">
-                        <div class="title">CHESS</div>
+                        <div class="title">SHESS</div>
                         <div class="desc">Shorts</div>
                     </div>
                 </div>
 
             </div>
+
+            <!-- ===== КНОПКА "ВСЕ ПРОЕКТЫ" ===== -->
+            <div class="portfolio-footer">
+                <a href="/portfolio/" class="btn-portfolio">
+                    Все проекты
+                    <span class="arrow">→</span>
+                </a>
+            </div>
         </div>
     </section>
 
+    <!-- ===== КОНТАКТЫ ===== -->
     <section id="contacts">
         <div class="container">
             <h2 class="section-title">Связаться <span class="accent">· давай работать</span></h2>
@@ -507,6 +570,7 @@
         </div>
     </section>
 
+    <!-- ===== ПОДВАЛ ===== -->
     <footer>
         <div class="container">
             CRUKI · монтаж &amp; моушен · 2026
