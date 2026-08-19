@@ -1,1 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUKI · PORTFOLIO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0b0b;
+            color: #ededed;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header {
+            padding: 40px 0 30px;
+            border-bottom: 1px solid #1a1a1a;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #ffffff 40%, #7a7a7a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header .sub {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-top: 4px;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 50%;
+            left: 24px;
+            transform: translateY(-50%);
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        .back-link svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            padding: 40px 0;
+        }
+
+        .video-card {
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #1e1e1e;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            border-color: #4fc3f7;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.77%;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #0a0a0a;
+        }
+
+        .video-wrapper video::-webkit-media-controls {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .video-wrapper video::-webkit-media-controls-panel {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .video-wrapper video::-webkit-media-controls-timeline {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        footer {
+            padding: 24px 0;
+            text-align: center;
+            color: #444;
+            font-size: 0.8rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.6rem; }
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 24px 0;
+            }
+            .back-link {
+                position: static;
+                transform: none;
+                justify-content: center;
+                margin-bottom: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 { font-size: 2rem; }
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                padding: 16px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container" style="position: relative;">
+            <a href="/" class="back-link">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                На главную
+            </a>
+            <h1>CRUKI</h1>
+            <div class="sub">MY PORTFOLIO</div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div id="videoGrid" class="video-grid"></div>
+    </section>
+
+    <footer>
+        <div class="container">CRUKI · 2026</div>
+    </footer>
+
+    <script>
+        // =============================================================
+        // ПРИОРИТЕТНЫЕ ВИДЕО (будут первыми)
+        // =============================================================
+        const priorityVideos = [18, 2, 13];
+
+        // =============================================================
+        // ОБЩЕЕ КОЛИЧЕСТВО ВИДЕО
+        // =============================================================
+        const totalVideos = 21;
+
+        // =============================================================
+        // ФОРМИРУЕМ ПОРЯДОК: сначала приоритетные, потом остальные по порядку
+        // =============================================================
+        const prioritySet = new Set(priorityVideos);
+        const remainingVideos = [];
+
+        for (let i = 1; i <= totalVideos; i++) {
+            if (!prioritySet.has(i)) {
+                remainingVideos.push(i);
+            }
+        }
+
+        const finalOrder = [...priorityVideos, ...remainingVideos];
+
+        // =============================================================
+        // ОТРИСОВЫВАЕМ ВИДЕО
+        // =============================================================
+        const videoGrid = document.getElementById('videoGrid');
+        let html = '';
+
+        finalOrder.forEach(num => {
+            const fileName = `${num}.mp4`;
+            html += `
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video controls playsinline preload="metadata">
+                            <source src="${fileName}" type="video/mp4">
+                            Ваш браузер не поддерживает тег video.
+                        </video>
+                    </div>
+                </div>
+            `;
+        });
+
+        videoGrid.innerHTML = html;
+    </script>
+
+</body>
+</html>
